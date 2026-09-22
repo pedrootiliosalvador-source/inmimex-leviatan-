@@ -1,0 +1,23 @@
+# ⚙️ MAKEFILE — INMIMEX LEVIATÁN
+# Comandos: make → compilar | make run → ejecutar | make clean → limpiar
+
+CC = g++
+CFLAGS = -Wall -std=c++17 -O2
+LDFLAGS = -pthread
+
+NOMBRE = leviatan
+FUENTES = main.cpp
+HEADERS = seguridad.h control.h monitoreo.h
+
+all: $(NOMBRE)
+
+$(NOMBRE): $(FUENTES) $(HEADERS)
+	$(CC) $(CFLAGS) -o $(NOMBRE) $(FUENTES) $(LDFLAGS)
+	@echo "✅ Compilación exitosa — Ejecutable: ./$(NOMBRE)"
+
+run: $(NOMBRE)
+	./$(NOMBRE)
+
+clean:
+	rm -f $(NOMBRE)
+	@echo "🧹 Limpieza completada"
